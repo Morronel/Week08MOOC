@@ -1,7 +1,10 @@
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class VehicleRegister {
-    HashMap<RegistrationPlate, String> owners = new HashMap<>();
+    private HashMap<RegistrationPlate, String> owners = new HashMap<>();
 
     public boolean add(RegistrationPlate plate, String owner){
         if (owners.get(plate) != null) {
@@ -30,5 +33,23 @@ public class VehicleRegister {
             owners.remove(plate);
             return true;
         }
+    }
+
+    public void printRegistrationPlates(){
+        for(Map.Entry<RegistrationPlate, String> entry : owners.entrySet()){
+            System.out.println(entry.getKey());
+        }
+    }
+
+    public void printOwners(){
+        ArrayList<String> list = new ArrayList<>();
+
+        for(Map.Entry<RegistrationPlate, String> entry : owners.entrySet()){
+            if (list.contains(entry.getValue()) == false){
+                list.add(entry.getValue());
+            }
+        }
+
+        System.out.println(list);
     }
 }
