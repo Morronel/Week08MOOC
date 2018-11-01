@@ -20,6 +20,20 @@ public class RegistrationPlate {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
 
+        if (getClass() != obj.getClass()){
+            return false;
+        }
+
+        RegistrationPlate compared = (RegistrationPlate) obj;
+
+        if (this.regCode == compared.regCode && this.country == compared.country){
+            return true;
+        }
+
+        return false;
     }
 }
