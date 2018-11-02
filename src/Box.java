@@ -1,28 +1,31 @@
-public class Box {
+import java.util.ArrayList;
+
+public class Box implements ToBeStored {
     private int maxWeight;
-    private int storedThingsCounter;
-    private double currentWeight;
+    private ArrayList<ToBeStored> itemList;
 
     public Box(int maxWeight){
         this.maxWeight = maxWeight;
+        this.itemList = new ArrayList<ToBeStored>();
     }
 
-    public void add(Book book){
-        if (book.weight() + this.currentWeight <= this.maxWeight){
-            this.storedThingsCounter++;
-            this.currentWeight += book.weight();
-        }
-    }
-
-    public void add(CD cd){
-        if (cd.weight() + this.currentWeight <= this.maxWeight){
-            this.storedThingsCounter++;
-            this.currentWeight += cd.weight();
+    public void add(ToBeStored thing){
+        if (thing.weight() + this.weight() <= this.maxWeight){
+            itemList.add(thing);
         }
     }
 
     @Override
+    public double weight() {
+        double weight = 0;
+        for (ToBeStored thing : itemList){
+            weight += thing.weight();
+        }
+        return weight;
+    }
+
+    @Override
     public String toString(){
-        return ("Box: " + storedThingsCounter + " things, total weight " + currentWeight + " kg");
+        return ("Box: " + itemList.size() + " things, total weight " + this.weight() + " kg");
     }
 }
