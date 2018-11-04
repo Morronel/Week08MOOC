@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Storehouse {
     private Map<String, Integer> map;
@@ -8,6 +9,10 @@ public class Storehouse {
     public Storehouse(){
         this.map = new HashMap<>();
         this.stockMap = new HashMap<>();
+    }
+
+    public Set<String> products(){
+        return map.keySet();
     }
 
     public int stock(String product){
