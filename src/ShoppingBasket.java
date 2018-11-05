@@ -21,4 +21,10 @@ public class ShoppingBasket {
         }
         return totalPrice;
     }
+
+    public void print(){
+        for(Purchase purchase : list){
+            System.out.println(purchase);
+        }
+    }
 }
