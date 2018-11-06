@@ -10,11 +10,11 @@ public class ShoppingBasket {
 
     //ТАК, БЛЕТ. Последний раз я закончил на том, что доделывал этот метод.
     public void add(String product, int price){
-        if (list.get(product) >= 1){
-            list.put()
+        if (list.get(product) == null){
+            list.put(new Purchase(product, 1, price), 1);
         }
         else{
-            list.put(new Purchase(product, 1, price), 1);
+            list.put(product, list.get(product) + 1);
         }
     }
 
