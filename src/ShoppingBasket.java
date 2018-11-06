@@ -1,16 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingBasket {
-    private List<Purchase> list;
+    private Map<Purchase, Integer> list;
 
     public ShoppingBasket(){
-        this.list = new ArrayList<Purchase>();
+        this.list = new HashMap<>();
     }
 
+    //ТАК, БЛЕТ. Последний раз я закончил на том, что доделывал этот метод.
     public void add(String product, int price){
-        Purchase purchase = new Purchase(product, 1, price);
-        list.add(purchase);
+        if (list.get(product) >= 1){
+            list.put()
+        }
+        else{
+            list.put(new Purchase(product, 1, price), 1);
+        }
     }
 
     public int price(){
