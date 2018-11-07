@@ -2,33 +2,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShoppingBasket {
-    private Map<Purchase, Integer> list;
+    private Map<String, Purchase> map;
 
     public ShoppingBasket(){
-        this.list = new HashMap<>();
+        this.map = new HashMap<>();
     }
 
-    //ТАК, БЛЕТ. Последний раз я закончил на том, что доделывал этот метод.
     public void add(String product, int price){
-        if (list.get(product) == null){
-            list.put(new Purchase(product, 1, price), 1);
+        if (map.containsKey(product)){
+            map.get(product).increaseAmount();
         }
         else{
-            list.put(product, list.get(product) + 1);
+            map.put(product, new Purchase(product, 1, price));
         }
     }
 
     public int price(){
         int totalPrice = 0;
 
-        for(Purchase purchase : list){
+        for(Purchase purchase : map.values()){
             totalPrice += purchase.price();
         }
         return totalPrice;
     }
 
     public void print(){
-        for(Purchase purchase : list){
+        for(Purchase purchase : map.values()){
             System.out.println(purchase);
         }
     }
