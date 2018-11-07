@@ -26,6 +26,10 @@ public class Shop {
             if (product.isEmpty()) {
                 break;
             }
+            else if (store.stock(product) > 0) {
+                store.take(product);
+                basket.add(product, store.price(product));
+            }
 
             // here, you write the code to add a product to the shopping basket, if the storehouse is not empty
             // and decreases the storehouse stocks
